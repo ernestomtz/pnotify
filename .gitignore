@@ -2,4 +2,3 @@
 /libtests/browserify/node_modules
 /libtests/browserify/bundle.js
 /vendor/
-/dist/
