@@ -4,8 +4,7 @@
 
 PNotify is a JavaScript notification plugin. PNotify can provide [desktop notifications](http://sciactive.com/pnotify/#web-notifications) based on the [Web Notifications spec](http://www.w3.org/TR/notifications/). If desktop notifications are not available or not permitted, PNotify will fall back to an in-browser notice.
 
-Demos
-=====
+# Demos
 
 * http://sciactive.com/pnotify/ for the latest release
 * https://sciactive.github.io/pnotify/ for what's in development (may be broken)
@@ -14,9 +13,30 @@ Demos
 
 I guarantee **none of this README applies to you!** You want to check out the **[README on the master branch](https://github.com/sciactive/pnotify/blob/master/README.md)**.
 
-This README is for **PNotify v4**. v4 isn't out yet, but it's got some huge changes. First of all, *jQuery is no longer required*. v4 doesn't require any libraries, actually. It's built using [Svelte](http://svelte.technology), which means it compiles down to vanilla JS.
+This README is for **PNotify v4**. v4 isn't out yet, but it's got some huge changes.
 
-But v4 isn't even in the alpha stage yet. The only thing that works is PNotify Core and the Buttons, Animate, and Callbacks modules. The other modules don't work.
+* jQuery is no longer required. v4 doesn't require any libraries, actually.
+* It's built using [Svelte](http://svelte.technology), which means it compiles down to vanilla JS.
+* PNotify now has an ES6 module build.
+
+But v4 isn't even in the alpha stage yet.
+
+Things that work:
+
+* PNotify Core
+* Bright Theme styling (CSS)
+* Material styling (module)
+* Buttons module
+* Animate module
+* Callbacks module
+
+Things that don't work:
+
+* Confirm module
+* Desktop module
+* History module
+* Mobile module
+* NonBlock module
 
 # Getting Started
 
@@ -56,24 +76,27 @@ Now you can use PNotify like this:
 
 ## Using a UI Library
 
-If you are not using any UI library, you can use the default styling, called Bright Theme. It is the default.
+If you are not using any UI library, you can use the default styling, called Bright Theme by including the PNotifyBrightTheme.css file. It is the default.
 
-If you are using the Material Style module, include this line somewhere before your first notice:
+If you are using a UI or icon library, include the appropriate lines below somewhere before your first notice:
 
 ```js
+//  The Material Style module. (PNotifyStyleMaterial.js)
 PNotify.defaults.styling = "material";
-```
+PNotify.defaults.icons = "material";
 
-If you are using Bootstrap version 3, include this line somewhere before your first notice:
-
-```js
+// Bootstrap version 3
 PNotify.defaults.styling = "bootstrap3";
-```
+PNotify.defaults.icons = "bootstrap3";
 
-If you are using Bootstrap 3 with Font Awesome, include this line somewhere before your first notice:
+// Bootstrap version 4
+PNotify.defaults.styling = "bootstrap4";
 
-```js
-PNotify.defaults.styling = "fontawesome";
+// Font Awesome 4
+PNotify.defaults.icons = "fontawesome4";
+
+// Font Awesome 5
+PNotify.defaults.icons = "fontawesome5";
 ```
 
 # Creating Notices
@@ -122,7 +145,8 @@ new PNotify({
 * `title_escape: false` - Whether to escape the content of the title. (Not allow HTML.)
 * `text: false` - The notice's text.
 * `text_escape: false` - Whether to escape the content of the text. (Not allow HTML.)
-* `styling: "brighttheme"` - What styling classes to use. (Can be either "brighttheme", "bootstrap3", "fontawesome", or a custom style object. See the source in the end of pnotify.js for the properties in a style object.)
+* `styling: "brighttheme"` - What styling classes to use. What styling classes to use. (Can be "brighttheme", "bootstrap3", "bootstrap4", or a styling object. See the source in PNotifyStyleMaterial.html for the properties in a style object.)
+* `icons: "brighttheme"` - What icons to use (Can be "brighttheme", "bootstrap3", "fontawesome4", "fontawesome5", or an icon object. See the source in PNotifyStyleMaterial.html for the properties in an icon object.)
 * `addclass: ""` - Additional classes to be added to the notice. (For custom styling.)
 * `cornerclass: ""` - Class to be added to the notice for corner styling.
 * `auto_display: true` - Display the notice when it is created. Turn this off to add notifications to the history without displaying them.
@@ -142,7 +166,7 @@ new PNotify({
 * `stack: PNotify.defaultStack` - The stack on which the notices will be placed. Also controls the direction the notices stack.
 * `modules: {}` - This is where options for modules should be defined.
 
-`PNotify.defaultStack` = `{"dir1": "down", "dir2": "left", "push": "bottom", "spacing1": 25, "spacing2": 25, "context": $("body"), "modal": false}`;
+`PNotify.defaultStack` = `{"dir1": "down", "dir2": "left", "push": "bottom", "spacing1": 25, "spacing2": 25, "context": document.body, "modal": false}`;
 
 ## Desktop Module
 
@@ -281,7 +305,7 @@ The callback options all expect one argument, a function, which will be called w
 
 A stack is an object which PNotify uses to determine where to position notices.
 
-* A stack has one mandatory properties, `dir1`.
+* A stack has one mandatory property, `dir1`.
 * You can also include a `dir2`.
 * `dir1` is the first direction in which the notices are stacked. When the notices run out of room in the window, they will move over in the direction specified by `dir2`.
 * If there is no `dir2`, the notices will be centered along the axis of `dir1`.
