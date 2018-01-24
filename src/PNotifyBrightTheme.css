@@ -10,6 +10,8 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   padding: 18px;
 }
 [ui-pnotify] .brighttheme .ui-pnotify-title {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   margin-bottom: 12px;
 }
 [ui-pnotify] .brighttheme-notice {
@@ -32,6 +34,10 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(255,255,255,.3) 35px, rgba(255,255,255,.3) 70px);
   border: 0 solid #FF1800;
   color: #4F0800;
+}
+[ui-pnotify] .brighttheme .ui-pnotify-icon > * {
+  position: relative;
+  top: -2px;
 }
 [ui-pnotify] .brighttheme-icon-notice,
 [ui-pnotify] .brighttheme-icon-info,
