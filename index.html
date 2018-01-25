@@ -53,9 +53,9 @@
   <script type="text/javascript" src="lib/iife/PNotifyNonBlock.js"></script>
   <script type="text/javascript" src="lib/iife/PNotifyMobile.js"></script>
   <script type="text/javascript" src="lib/iife/PNotifyHistory.js"></script>
+  <script type="text/javascript" src="lib/iife/PNotifyDesktop.js"></script>
   <!--
   <script type="text/javascript" src="lib/iife/PNotifyConfirm.js"></script>
-  <script type="text/javascript" src="lib/iife/PNotifyDesktop.js"></script>
   -->
   <script type="text/javascript" src="lib/iife/PNotifyStyleMaterial.js"></script>
   <script type="text/javascript" src="lib/iife/PNotifyReference.js"></script>
@@ -176,7 +176,7 @@
               //   }
               // });
 
-              // notice.queueRemove();
+              // notice.queueClose();
               // return false;
             }
           }
@@ -205,7 +205,7 @@
             }
           }
         });
-        // Remove the notice if the user mouses over it.
+        // Close the notice if the user mouses over it.
         tooltip.on("mouseout", function(){
           tooltip.close();
         });
@@ -370,7 +370,7 @@
                   });
                 }
                 if (cur_value >= 100) {
-                  // Remove the interval.
+                  // Clean up the interval.
                   window.clearInterval(timer);
                   loader.close();
                   return;
@@ -812,54 +812,64 @@
   </section>
   <section class="container page-points">
     <div class="container">
-      <div class="card-group">
-        <div class="card border-bottom-0" style="border-bottom-left-radius: 0; flex-grow: 2;">
-          <h5 class="card-header"><i class="fas fa-book"></i> About</h5>
-          <div class="card-body">
-            PNotify is a JavaScript notification system, developed
-            by <a href="https://github.com/sciactive/">SciActive</a>.
-            <br />
-            <br />
-            PNotify provides desktop notifications based on the
-            <a href="http://www.w3.org/TR/notifications/" target="_blank">Web Notifications spec</a>.
-            If desktop notifications are not available or not allowed,
-            PNotify will fall back to displaying the notice as a
-            regular, in-browser notice.
+      <div class="row align-items-stretch">
+        <div class="col-sm-8 my-3">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-book"></i> About</h5>
+              PNotify is a JavaScript notification system, developed
+              by <a href="https://github.com/sciactive/">SciActive</a>.
+              <br />
+              <br />
+              PNotify provides desktop notifications based on the
+              <a href="http://www.w3.org/TR/notifications/" target="_blank">Web Notifications spec</a>.
+              If desktop notifications are not available or not allowed,
+              PNotify will fall back to displaying the notice as a
+              regular, in-browser notice.
+            </div>
           </div>
         </div>
-        <div class="card border-bottom-0" style="border-bottom-right-radius: 0;">
-          <h5 class="card-header"><i class="fas fa-mobile"></i> Mobile Ready</h5>
-          <div class="card-body">
-            PNotify works on your phone and tablet. You can swipe
-            notices away to dismiss them.
+        <div class="col-sm-4 my-3">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-mobile"></i> Mobile Ready</h5>
+              PNotify works on your phone and tablet. You can swipe
+              notices away to dismiss them.
+            </div>
           </div>
         </div>
       </div>
-      <div class="card-group">
-        <div class="card" style="border-top-left-radius: 0;">
-          <h5 class="card-header"><i class="fas fa-asterisk"></i> Unobtrusive</h5>
-          <div class="card-body">
-            PNotify can provide <strong>non-blocking</strong> notices
-            that allow the user to click elements behind the notice without
-            even having to dismiss it.
-          </div>
-          <div class="card-body">
-            <a class="btn btn-outline-dark" data-toggle="modal" href="#feature-modal" >See All Features</a>
-          </div>
-        </div>
-        <div class="card">
-          <h5 class="card-header"><i class="fas fa-images"></i> Themeable</h5>
-          <div class="card-body">
-            PNotify can use Bootstrap themes. Try out some of the
-            readymade themes using the selector in the top right corner
-            of this page.
+      <div class="row align-items-stretch">
+        <div class="col-sm-4 my-3">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-asterisk"></i> Unobtrusive</h5>
+              PNotify can provide <strong>non-blocking</strong> notices
+              that allow the user to click elements behind the notice without
+              even having to dismiss it.
+            </div>
+            <div class="card-body">
+              <a class="btn btn-outline-dark" data-toggle="modal" href="#feature-modal" >See All Features</a>
+            </div>
           </div>
         </div>
-        <div class="card" style="border-top-right-radius: 0;">
-          <h5 class="card-header"><i class="fas fa-gift"></i> Completely Open</h5>
-          <div class="card-body">
-            PNotify is distributed under the permissive
-            <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a>.
+        <div class="col-sm-4 my-3">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-images"></i> Themeable</h5>
+              PNotify can use Bootstrap themes. Try out some of the
+              readymade themes using the selector in the top right corner
+              of this page.
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 my-3">
+          <div class="card" style="height: 100%;">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-gift"></i> Completely Open</h5>
+              PNotify is distributed under the permissive
+              <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a>.
+            </div>
           </div>
         </div>
       </div>
@@ -1274,7 +1284,7 @@ color: #FF0;
           </div>
         </div>
         <hr style="clear: both;" />
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.removeAll();">Remove All Notices</button>
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.closeAll();">Close All Notices</button>
       </div>
     </div>
   </div>
@@ -1298,73 +1308,68 @@ color: #FF0;
           If your browser doesn't support Web Notifications, or you deny permission to show them, you will only see regular in-browser notices. You can check <a href="http://caniuse.com/notifications" target="_blank">here</a>.
         </p>
         <hr />
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.notice({
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
           title: 'Desktop Notice',
-          text: 'If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
+          text: 'I\'ll appear as a desktop notification. Unless I can\'t. I\'ll still appear as a regular PNotify notice then.',
           modules: {
             Desktop: {
               desktop: true
             }
           }
-        }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });">Notice</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.info({
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.info({
           title: 'Desktop Info',
-          text: 'If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
+          text: 'Hey there. Something happened.',
           modules: {
             Desktop: {
               desktop: true
             }
           }
-        }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });">Info</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.success({
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.success({
           title: 'Desktop Success',
-          text: 'If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
+          text: 'All done! Come back to my tab!',
           modules: {
             Desktop: {
               desktop: true
             }
           }
-        }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });">Success</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.error({
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.error({
           title: 'Desktop Error',
-          text: 'If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
+          text: 'Serious error is serious.',
           modules: {
             Desktop: {
               desktop: true
             }
           }
-        }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });">Error</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.notice({
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
           title: 'Desktop Custom Icon',
-          text: 'If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
+          text: 'I\'ve got a custom icon.',
           modules: {
             Desktop: {
               desktop: true,
               icon: 'includes/le_happy_face_by_luchocas-32.png'
             }
           }
-        }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
-        });">Custom</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.notice({
+        });">Custom Icon</button>
+        <!-- <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
+          title: 'Desktop Image',
+          type: 'info',
+          text: 'I\'ve got an image.&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/240px-Happy_smiley_face.png&quot; /&gt;&lt;/div&gt;',
+          modules: {
+            Desktop: {
+              desktop: true,
+              text: 'I\'ve got an image.',
+              icon: false,
+              options {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Happy_smiley_face.png/240px-Happy_smiley_face.png'
+              }
+            }
+          }
+        });">Image</button> -->
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
           title: 'Alternate Text Notice - Browser',
           text: 'This text appears on the &lt;strong&gt;browser&lt;/strong&gt;.',
           modules: {
@@ -1374,59 +1379,64 @@ color: #FF0;
               text: 'This text appears on the *desktop*.'
             }
           }
-        })).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });">Alternate Text and Title</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.notice({
-          title: 'Sticky Desktop Notice',
-          text: 'I\'m a sticky notice, so you\'ll have to close me yourself. (Some systems don\'t allow sticky notifications.) If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
-          hide: false,
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
+          title: 'Clicky Desktop Notice',
+          text: 'Click me.',
           modules: {
             Desktop: {
-              desktop: true
+              desktop: true,
+              icon: false
             }
           }
         }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
+          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target)) {
             return;
+          }
           alert('Hey! You clicked the desktop notification!');
-        });">Sticky</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); var notice = PNotify.notice({
+        });">Clicky</button>
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
+          title: 'Sticky Desktop Notice',
+          text: 'I\'m a sticky notice. (Some browsers don\'t allow sticky Web Notifications.)',
+          hide: false,
+          modules: {
+            Desktop: {
+              desktop: true,
+              icon: false
+            }
+          }
+        }).on('click', function(e){
+          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target)) {
+            return;
+          }
+          alert('Hey! You clicked the desktop notification!');
+        });">Sticky Clicky</button>
+        <button class="btn btn-outline-dark my-1 source" onclick="var notice = PNotify.notice({
           title: 'Dynamic Desktop Notice',
-          text: 'I\'m a dynamic desktop notice. I\'ll change my type and text in a few seconds. If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I\'ll still appear as a regular PNotify notice.',
+          text: 'I\'m a dynamic desktop notice.',
           modules: {
             Desktop: {
               desktop: true
             }
           }
-        });
-        notice.on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });
         setTimeout(function(){
           notice.update({
             type: 'info',
             text: 'Now I\'m an info box!'
           });
-        }, 4000);">Dynamic</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.desktop.permission(); PNotify.notice({
+        }, 1000);">Dynamic</button>
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.notice({
           title: 'Desktop Notice',
-          text: 'If you\'ve given me permission, I\'ll appear as a desktop notification. If you haven\'t, I won\'t appear at all, because my fallback is turned off.',
+          text: 'I won\'t fall back to a regular notice.',
           modules: {
             Desktop: {
               desktop: true,
               fallback: false
             }
           }
-        }).on('click', function(e){
-          if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target))
-            return;
-          alert('Hey! You clicked the desktop notification!');
         });" title="Disabling fallback makes the notice not appear at all if it can't appear as a desktop notice.">No Fallback</button>
+        <button class="btn btn-outline-dark my-1 source" onclick="PNotify.modules.Desktop.permission();">Explicitly Ask for Notice Permission</button>
       </div>
       <h5 class="card-header">Buttons Module <small>Sticker and a closer buttons.</small></h5>
       <div class="card-body">
@@ -1503,7 +1513,7 @@ color: #FF0;
             }
           });
         }">Permanotice</button>
-        <button class="btn btn-outline-dark my-1 source" onclick="if (permanotice.remove) permanotice.close();">Remove Permanotice</button>
+        <button class="btn btn-outline-dark my-1 source" onclick="if (permanotice.close) permanotice.close();">Close Permanotice</button>
       </div>
       <h5 class="card-header">NonBlock Module <small>Click through to things underneath the notice.</small></h5>
       <div class="card-body">
@@ -1962,7 +1972,7 @@ color: #FF0;
           }
         });
         notice.on('pnotify.confirm', function(e, val){
-          notice.cancelRemove().update({
+          notice.cancelClose().update({
             title: 'You\'ve Chosen a Side', text: 'You want '+$('<div/>').text(val).html()+'.', icon: true, type: 'info', hide: true,
             modules: {
               Confirm: {
@@ -1976,7 +1986,7 @@ color: #FF0;
           });
         });
         notice.on('pnotify.cancel', function(e){
-          notice.cancelRemove().update({
+          notice.cancelClose().update({
             title: 'You Don\'t Want a Side', text: 'No soup for you!', icon: true, type: 'info', hide: true,
             modules: {
               Confirm: {
@@ -2010,7 +2020,7 @@ color: #FF0;
           }
         });
         notice.on('pnotify.confirm', function(e, val){
-          notice.cancelRemove().update({
+          notice.cancelClose().update({
             title: 'Your Poem', text: $('<div/>').text(val).html(), icon: true, type: 'info', hide: true,
             modules: {
               Confirm: {
@@ -2024,7 +2034,7 @@ color: #FF0;
           });
         });
         notice.on('pnotify.cancel', function(e){
-          notice.cancelRemove().update({
+          notice.cancelClose().update({
             title: 'You Don\'t Like Poetry', text: 'Roses are dead,\nViolets are dead,\nI suck at gardening.', icon: true, type: 'info', hide: true,
             modules: {
               Confirm: {
@@ -2066,7 +2076,7 @@ color: #FF0;
               },
               before_close: function(notice, timer_hide){
                 console.log('before_close', notice, timer_hide);
-                var source_note = 'Return false to cancel close. Use PNotify.queueRemove() to set the removal timer again.';
+                var source_note = 'Return false to cancel close. Use PNotify.queueClose() to set the close timer again.';
                 dont_alert('I\'m called before the notice closes. I\'m passed the PNotify object for the current notice: '+notice);
                 dont_alert('I also have an argument called timer_hide, which is true if the notice was closed because the timer ran down. Value: '+timer_hide);
               },
@@ -2107,21 +2117,21 @@ color: #FF0;
                                   }
                                 });
                                 notice.attention('swing');
-                                notice.queueRemove();
+                                notice.queueClose();
                                 return false;
                               }
                             }
                           }
                         });
                         notice.attention('swing');
-                        notice.queueRemove();
+                        notice.queueClose();
                         return false;
                       }
                     }
                   }
                 });
                 notice.attention('swing');
-                notice.queueRemove();
+                notice.queueClose();
                 return false;
               }
             }
